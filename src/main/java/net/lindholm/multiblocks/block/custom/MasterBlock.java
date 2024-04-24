@@ -44,10 +44,10 @@ public class MasterBlock extends BaseEntityBlock {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if(blockEntity instanceof MasterBlockEntity) {
                    player.openMenu((MenuProvider)blockEntity);
-                }
-            } else {
-                throw new IllegalStateException("The Container provider is missing.");
             }
+        } else {
+            throw new IllegalStateException("The Container provider is missing.");
+        }
 
         return InteractionResult.sidedSuccess(level.isClientSide());
     }

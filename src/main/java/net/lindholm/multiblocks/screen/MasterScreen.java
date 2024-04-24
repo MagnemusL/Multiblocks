@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class MasterScreen extends AbstractContainerScreen<MasterMenu> {
     private final ResourceLocation TEXTURE =
-            new ResourceLocation(MultiBlockMod.MODID, "textures/gui/acid_shower_gui.png");
+            new ResourceLocation(MultiBlockMod.MODID, "textures/gui/master_gui.png");
 
 
     public MasterScreen(MasterMenu menu, Inventory inventory, Component title) {

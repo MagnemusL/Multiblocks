@@ -4,8 +4,11 @@ import com.mojang.logging.LogUtils;
 import net.lindholm.multiblocks.block.ModBlocks;
 import net.lindholm.multiblocks.block.entity.ModBlockEntities;
 import net.lindholm.multiblocks.item.ModItems;
+import net.lindholm.multiblocks.screen.MasterMenu;
+import net.lindholm.multiblocks.screen.MasterScreen;
 import net.lindholm.multiblocks.screen.ModMenuTypes;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -64,7 +67,7 @@ public class MultiBlockMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            MenuScreens.register(ModMenuTypes.MASTER_MENU.get(), MasterScreen::new);
         }
     }
 }

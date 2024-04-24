@@ -6,6 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class MasterBlockEntity extends BlockEntity {
+public class MasterBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(5) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -90,6 +91,17 @@ public class MasterBlockEntity extends BlockEntity {
         }
 
         Containers.dropContents(this.level, this.worldPosition, inventory);
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return Component.translatable("blockentity.master");
+    }
+
+    @Nullable
+    @Override
+    public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
+        return new MasterMenu(containerId, inventory, this, this.data);
     }
 
     @Override
